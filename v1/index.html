@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Brandon S. Clark — Senior Software Engineer</title>
+<meta name="description" content="Brandon S. Clark — Senior Software Engineer (backend, platform, integrations, AWS). I build secure, scalable systems and turn ambiguous problems into software teams can rely on." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- grain + scanline overlays -->
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<!-- scroll progress -->
+<div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+<!-- fixed chrome -->
+<header class="chrome">
+  <a href="#top" class="mark" aria-label="Brandon S. Clark — top">
+    <span class="mark__glyph">BSC</span>
+  </a>
+  <div class="chrome__status">
+    <span class="dot" aria-hidden="true"></span>
+    <span class="mono">AVAILABLE FOR SENIOR / STAFF ROLES</span>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" data-screen-label="Hero">
+    <canvas id="net" class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__grid" aria-hidden="true"></div>
+    <div class="hero__spot" id="heroSpot" aria-hidden="true"></div>
+
+    <div class="hero__inner">
+      <p class="hero__eyebrow mono reveal">
+        <span>SENIOR SOFTWARE ENGINEER</span>
+        <span class="sep">/</span>
+        <span>BACKEND · PLATFORM · INTEGRATIONS · AWS</span>
+      </p>
+
+      <h1 class="hero__name reveal" data-reveal-delay="1">
+        <span class="line">Brandon</span>
+        <span class="line">S.&nbsp;Clark</span>
+      </h1>
+
+      <p class="hero__lede reveal" data-reveal-delay="2">
+        I build secure, scalable systems and turn ambiguous problems
+        into software teams can <em>rely on</em>.
+      </p>
+
+      <ul class="scope reveal" data-reveal-delay="3" aria-label="Scope at a glance">
+        <li><strong>9<span class="plus">+</span></strong><span class="mono">years</span></li>
+        <li><strong>3</strong><span class="mono">companies</span></li>
+        <li><strong>6</strong><span class="mono">roles</span></li>
+        <li><strong>AWS<span class="plus">×2</span></strong><span class="mono">certified</span></li>
+        <li class="scope__arc"><strong>full-stack&nbsp;→&nbsp;platform</strong><span class="mono">trajectory</span></li>
+      </ul>
+
+      <div class="hero__contact reveal" data-reveal-delay="4">
+        <a class="link" href="mailto:bsc_work@yahoo.com">
+          <span class="link__k mono">EMAIL</span><span class="link__v">bsc_work@yahoo.com</span>
+        </a>
+        <a class="link" href="https://linkedin.com/in/brandon-c-it-industry" target="_blank" rel="noopener">
+          <span class="link__k mono">LINKEDIN</span><span class="link__v">in/brandon-c-it-industry</span>
+        </a>
+        <a class="link" href="https://github.com/theghostarbiter" target="_blank" rel="noopener">
+          <span class="link__k mono">GITHUB</span><span class="link__v">theghostarbiter</span>
+        </a>
+        <span class="link link--loc">
+          <span class="link__k mono">BASED</span><span class="link__v">Wausau, WI</span>
+        </span>
+      </div>
+    </div>
+
+    <a href="#impact" class="hero__scroll mono" aria-label="Scroll to impact">
+      <span>SCROLL</span>
+      <span class="hero__scroll-line" aria-hidden="true"></span>
+    </a>
+  </section>
+
+  <!-- ============ SELECTED IMPACT ============ -->
+  <section class="section section--impact" id="impact" data-screen-label="Selected impact">
+    <div class="section__head reveal">
+      <span class="marker mono">01 — SELECTED&nbsp;IMPACT</span>
+      <h2 class="section__title">Scope first.<br />Metrics as proof.</h2>
+      <p class="section__intro">Each number below carries the context that earned it — platforms shipped, constraints beaten, work that disappeared.</p>
+    </div>
+
+    <div class="impact">
+      <article class="card card--lg reveal">
+        <span class="card__tag mono">PAYMENTS PLATFORM · BUILT &amp; SCALED</span>
+        <div class="card__metric">
+          <span class="num" data-count="85" data-prefix="$" data-suffix="M+">$0M+</span>
+        </div>
+        <p class="card__desc">Processed across <strong>~250K payments</strong> through a client-facing payment platform I designed, built, and scaled in production.</p>
+        <div class="bar" aria-hidden="true">
+          <span class="bar__fill" style="--to: 100%"></span>
+        </div>
+        <span class="card__foot mono">FOUNDATION FINANCE</span>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__tag mono">CONSTRAINED DEVICES · MQTT</span>
+        <div class="card__metric">
+          <span class="num" data-count="97" data-suffix="%">0%</span>
+          <span class="card__metric-label">smaller payloads</span>
+        </div>
+        <div class="ba" aria-hidden="true">
+          <span class="ba__row"><span class="ba__k mono">BEFORE</span><span class="ba__bar"><i style="--w:100%"></i></span><span class="ba__v">476&nbsp;B</span></span>
+          <span class="ba__row ba__row--after"><span class="ba__k mono">AFTER</span><span class="ba__bar"><i style="--w:3.2%"></i></span><span class="ba__v">15&nbsp;B</span></span>
+        </div>
+        <p class="card__desc">Delta-update protocol over MQTT — protecting bandwidth and battery on constrained IoT hardware.</p>
+        <span class="card__foot mono">MILWAUKEE TOOL</span>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__tag mono">PROVISIONING · CLI + API</span>
+        <div class="card__metric">
+          <span class="num" data-count="80" data-suffix="%">0%</span>
+          <span class="card__metric-label">faster provisioning</span>
+        </div>
+        <div class="ba" aria-hidden="true">
+          <span class="ba__row"><span class="ba__k mono">BEFORE</span><span class="ba__bar"><i style="--w:100%"></i></span><span class="ba__v">~10&nbsp;min</span></span>
+          <span class="ba__row ba__row--after"><span class="ba__k mono">AFTER</span><span class="ba__bar"><i style="--w:20%"></i></span><span class="ba__v">&lt;2&nbsp;min</span></span>
+        </div>
+        <p class="card__desc">A secure CLI + API workflow that replaced a slow, manual device-onboarding process.</p>
+        <span class="card__foot mono">MILWAUKEE TOOL</span>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__tag mono">AUTOMATION · TOIL REMOVED</span>
+        <div class="card__metric">
+          <span class="num" data-count="1200" data-suffix="+">0+</span>
+          <span class="card__metric-label">hours automated</span>
+        </div>
+        <p class="card__desc">Of manual work eliminated — roughly <strong>$40K</strong> of recovered capacity returned to the business.</p>
+        <div class="bar" aria-hidden="true">
+          <span class="bar__fill" style="--to: 88%"></span>
+        </div>
+        <span class="card__foot mono">FOUNDATION FINANCE</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ RECOGNITION ============ -->
+  <section class="section section--rec" id="recognition" data-screen-label="Recognition">
+    <div class="section__head reveal">
+      <span class="marker mono">02 — RECOGNITION&nbsp;&amp;&nbsp;TRUST</span>
+      <h2 class="section__title">The work that<br />gets you the keys.</h2>
+    </div>
+
+    <ul class="rec">
+      <li class="rec__item reveal">
+        <span class="rec__no mono">A1</span>
+        <p>The <strong>only engineer across two teams</strong> to earn an AWS certification by self-study.</p>
+      </li>
+      <li class="rec__item reveal">
+        <span class="rec__no mono">A2</span>
+        <p><strong>“Exceeds Expectations”</strong> on leadership behaviors in formal review.</p>
+      </li>
+      <li class="rec__item reveal">
+        <span class="rec__no mono">A3</span>
+        <p>Repeatedly the <strong>sole / lead engineer</strong> trusted on critical integrations.</p>
+      </li>
+      <li class="rec__item reveal">
+        <span class="rec__no mono">A4</span>
+        <p>Called a <strong>“Rockstar”</strong> by leadership — and by Oracle.</p>
+      </li>
+      <li class="rec__item reveal">
+        <span class="rec__no mono">A5</span>
+        <p>Led a <strong>4-person innovation sprint</strong> from concept to demo.</p>
+      </li>
+      <li class="rec__item reveal">
+        <span class="rec__no mono">A6</span>
+        <p>Cut <strong>new-engineer onboarding ~30%</strong> with better docs and tooling.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section class="section section--exp" id="experience" data-screen-label="Experience">
+    <div class="section__head reveal">
+      <span class="marker mono">03 — EXPERIENCE</span>
+      <h2 class="section__title">Nine years,<br />moving up the stack.</h2>
+    </div>
+
+    <ol class="timeline">
+      <li class="tl reveal">
+        <div class="tl__when">
+          <span class="tl__years mono">2021 — PRESENT</span>
+          <span class="tl__badge mono">CURRENT</span>
+        </div>
+        <div class="tl__body">
+          <h3 class="tl__role">Senior Software Engineer</h3>
+          <p class="tl__org">Milwaukee Tool</p>
+          <ul class="tl__points">
+            <li>Built secure IoT device <strong>provisioning</strong> (CLI + API) — cutting onboarding from ~10&nbsp;min to under 2.</li>
+            <li>Designed <strong>MQTT delta updates</strong> shrinking device payloads ~97% (476&nbsp;B → 15&nbsp;B).</li>
+            <li>Modernized tool-data pipelines on <strong>DocumentDB</strong>; built <strong>Oracle Unifier</strong> integrations.</li>
+            <li>Shipped on <strong>AWS serverless</strong> — Lambda, Step Functions, API Gateway, IoT Core.</li>
+          </ul>
+          <ul class="tl__stack mono">
+            <li>Python</li><li>TypeScript</li><li>MQTT</li><li>DocumentDB</li><li>AWS</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="tl reveal">
+        <div class="tl__when">
+          <span class="tl__years mono">2019 — 2021</span>
+        </div>
+        <div class="tl__body">
+          <h3 class="tl__role">Software Engineer</h3>
+          <p class="tl__org">Foundation Finance</p>
+          <ul class="tl__points">
+            <li>Built and scaled a client-facing <strong>$85M+ payment platform</strong> (~250K payments).</li>
+            <li>Automated <strong>1,200+ hours</strong> of manual work — roughly $40K recovered.</li>
+            <li>Delivered a customer portal on a <strong>MERN</strong> stack.</li>
+          </ul>
+          <ul class="tl__stack mono">
+            <li>Node.js</li><li>React</li><li>MongoDB</li><li>Express</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="tl reveal">
+        <div class="tl__when">
+          <span class="tl__years mono">2017 — 2019</span>
+        </div>
+        <div class="tl__body">
+          <h3 class="tl__role">Software Engineer</h3>
+          <p class="tl__org">Aqua Finance</p>
+          <ul class="tl__points">
+            <li><strong>Promoted within 4 months</strong> of joining.</li>
+            <li>Built and modernized systems across <strong>.NET, Java, and Salesforce</strong>.</li>
+          </ul>
+          <ul class="tl__stack mono">
+            <li>C#</li><li>Java</li><li>Salesforce</li><li>SQL</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="tl reveal">
+        <div class="tl__when">
+          <span class="tl__years mono">2016 — 2017</span>
+        </div>
+        <div class="tl__body">
+          <h3 class="tl__role">Software / QA Engineer</h3>
+          <p class="tl__org">MN Attorney General’s Office</p>
+          <ul class="tl__points">
+            <li>Built an <strong>MS Access error handler</strong> for a case-management system.</li>
+            <li>Ran <strong>full-lifecycle testing</strong> across releases.</li>
+          </ul>
+          <ul class="tl__stack mono">
+            <li>MS Access</li><li>VBA</li><li>QA</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section class="section section--skills" id="skills" data-screen-label="Skills">
+    <div class="section__head reveal">
+      <span class="marker mono">04 — CAPABILITIES</span>
+      <h2 class="section__title">The toolkit,<br />grouped by intent.</h2>
+    </div>
+
+    <div class="skills">
+      <div class="skg reveal">
+        <h3 class="skg__title">Cloud &amp; Platform</h3>
+        <ul class="skg__list mono">
+          <li>AWS</li><li>Lambda</li><li>Step Functions</li><li>API Gateway</li><li>IoT Core</li><li>DynamoDB</li><li>DocumentDB</li><li>Terraform</li><li>Docker</li><li>Kubernetes</li><li>CI/CD</li>
+        </ul>
+      </div>
+      <div class="skg reveal">
+        <h3 class="skg__title">Languages</h3>
+        <ul class="skg__list mono">
+          <li>Python</li><li>TypeScript</li><li>Node.js</li><li>Java</li><li>C#</li><li>SQL / T-SQL</li>
+        </ul>
+      </div>
+      <div class="skg reveal">
+        <h3 class="skg__title">Data &amp; APIs</h3>
+        <ul class="skg__list mono">
+          <li>REST</li><li>OpenAPI</li><li>ETL</li><li>MongoDB / Atlas</li><li>SQL Server</li><li>Redis</li><li>MQTT</li><li>Auth0</li><li>WebSockets</li>
+        </ul>
+      </div>
+      <div class="skg reveal">
+        <h3 class="skg__title">Reliability &amp; Security</h3>
+        <ul class="skg__list mono">
+          <li>Observability</li><li>SLAs / SLOs</li><li>OAuth / OIDC</li><li>Secrets management</li>
+        </ul>
+      </div>
+      <div class="skg reveal">
+        <h3 class="skg__title">Frontend</h3>
+        <ul class="skg__list mono">
+          <li>React</li><li>AngularJS</li><li>Express</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CREDENTIALS ============ -->
+  <section class="section section--cred" id="credentials" data-screen-label="Credentials">
+    <div class="section__head reveal">
+      <span class="marker mono">05 — CREDENTIALS</span>
+    </div>
+    <div class="cred">
+      <div class="cred__col reveal">
+        <h3 class="cred__h mono">CERTIFICATIONS</h3>
+        <ul class="cred__list">
+          <li>
+            <span class="cred__name">AWS Solutions Architect — Associate</span>
+            <span class="cred__meta mono">SAA-C03</span>
+          </li>
+          <li>
+            <span class="cred__name">AWS Certified Cloud Practitioner</span>
+            <span class="cred__meta mono">CLF-C01</span>
+          </li>
+        </ul>
+      </div>
+      <div class="cred__col reveal">
+        <h3 class="cred__h mono">EDUCATION</h3>
+        <ul class="cred__list">
+          <li>
+            <span class="cred__name">B.S. Finance — minor in Computer Science</span>
+            <span class="cred__meta mono">UNIVERSITY OF WISCONSIN — RIVER FALLS</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT / FOOTER ============ -->
+  <footer class="footer" id="contact" data-screen-label="Contact">
+    <div class="footer__grain" aria-hidden="true"></div>
+    <p class="footer__kicker mono reveal">LET’S BUILD SOMETHING RELIABLE</p>
+    <a class="footer__mail reveal" href="mailto:bsc_work@yahoo.com">bsc_work@yahoo.com</a>
+    <div class="footer__links reveal">
+      <a href="https://linkedin.com/in/brandon-c-it-industry" target="_blank" rel="noopener" class="mono">LINKEDIN ↗</a>
+      <a href="https://github.com/theghostarbiter" target="_blank" rel="noopener" class="mono">GITHUB ↗</a>
+      <a href="mailto:bsc_work@yahoo.com" class="mono">EMAIL ↗</a>
+    </div>
+    <div class="footer__base mono">
+      <span>BRANDON S. CLARK</span>
+      <span>SENIOR SOFTWARE ENGINEER · WAUSAU, WI</span>
+      <span>© 2026</span>
+    </div>
+  </footer>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
