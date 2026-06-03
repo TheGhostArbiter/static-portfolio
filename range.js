@@ -46,6 +46,8 @@
   var lastScore = 0;
   var modalOpen = false;
   var modal = null;
+  var rangeHint = null;
+  var HINT_KEY = "bsc_range_hint_seen";
 
   /* =====================================================================
      LEADERBOARD ADAPTER
@@ -237,7 +239,27 @@
     "body.tiles-armed .rt-tile:hover{ box-shadow:inset 0 0 0 1px var(--ember); }",
     "body.tiles-armed .rt-tile:hover::after{ opacity:.85; }",
     ".rt-tile.is-swapping{ animation:tile-glitch .44s steps(1,end); }",
-    "@keyframes tile-glitch{ 0%{ clip-path:inset(0); transform:none; } 18%{ clip-path:inset(44% 0 30% 0); transform:translateX(3px); } 34%{ clip-path:inset(8% 0 64% 0); transform:translateX(-3px); } 52%{ clip-path:inset(34% 0 14% 0); transform:translateX(2px); } 70%{ clip-path:inset(0); transform:none; } }"
+    "@keyframes tile-glitch{ 0%{ clip-path:inset(0); transform:none; } 18%{ clip-path:inset(44% 0 30% 0); transform:translateX(3px); } 34%{ clip-path:inset(8% 0 64% 0); transform:translateX(-3px); } 52%{ clip-path:inset(34% 0 14% 0); transform:translateX(2px); } 70%{ clip-path:inset(0); transform:none; } }",
+
+    /* ---- first-visit callout that points at the RANGE chip ---- */
+    ".range-hint{ position:fixed; z-index:80; max-width:296px; display:flex; gap:10px; align-items:flex-start;",
+    "  padding:12px 12px 12px 14px; background:var(--panel-2,rgba(22,20,24,.93)); -webkit-backdrop-filter:blur(9px); backdrop-filter:blur(9px);",
+    "  border:1px solid var(--ember-line,rgba(255,106,43,.5)); box-shadow:0 0 44px -12px rgba(255,106,43,.65);",
+    "  opacity:0; transform:translateY(-6px); transition:opacity .3s, transform .3s; pointer-events:none; }",
+    ".range-hint.is-on{ opacity:1; transform:none; pointer-events:auto; }",
+    ".range-hint__arrow{ position:absolute; top:-7px; right:24px; width:12px; height:12px; background:var(--panel-2,rgba(22,20,24,.93));",
+    "  border-left:1px solid var(--ember-line,rgba(255,106,43,.5)); border-top:1px solid var(--ember-line,rgba(255,106,43,.5)); transform:rotate(45deg); }",
+    ".range-hint__body{ display:flex; flex-direction:column; gap:5px; font-family:var(--f-mono,monospace); font-size:11px;",
+    "  line-height:1.55; letter-spacing:.03em; color:var(--muted,#8c8678); }",
+    ".range-hint__body b{ color:var(--ember); font-weight:700; }",
+    ".range-hint__hd{ font-size:10px; letter-spacing:.16em; }",
+    ".range-hint kbd{ display:inline-block; padding:1px 5px; border:1px solid var(--ember-line,rgba(255,106,43,.5)); color:var(--bone,#cfc9bd);",
+    "  font-family:inherit; font-size:10px; line-height:1.3; }",
+    ".range-hint__x{ flex:none; margin:-2px -2px 0 0; padding:2px 5px; background:none; border:0; cursor:pointer;",
+    "  color:var(--faint,#6a6458); font-family:var(--f-mono,monospace); font-size:12px; transition:color .15s; }",
+    ".range-hint__x:hover{ color:var(--ember); }",
+    reduce ? ".range-hint{ transition:opacity .2s; transform:none; }" : ".range-toggle__ping{ }",
+    "@media (max-width:600px){ .range-hint{ max-width:min(296px, calc(100vw - 24px)); } }"
   ].join("\n");
   document.head.appendChild(css);
 
@@ -265,6 +287,52 @@
     injectToggle();
     bind();
     setVal("hi", hi);
+    setTimeout(maybeHint, 1500);
+  }
+
+  /* ---------------- first-visit hint ---------------- */
+  function maybeHint() {
+    if (localStorage.getItem(HINT_KEY)) return;       // shown once, never again
+    var btn = document.querySelector(".range-toggle");
+    if (!btn || active) return;
+
+    var tip = document.createElement("div");
+    tip.className = "range-hint";
+    tip.setAttribute("role", "note");
+    tip.innerHTML =
+      '<span class="range-hint__arrow" aria-hidden="true"></span>' +
+      '<span class="range-hint__body">' +
+        '<b class="range-hint__hd">◎ TARGETING RANGE</b>' +
+        '<span>Hit <b>◎ RANGE</b> up here (or press <kbd>R</kbd>) to arm the page and shoot the targets. <kbd>ESC</kbd> exits.</span>' +
+      '</span>' +
+      '<button class="range-hint__x" type="button" aria-label="Dismiss">\u2715</button>';
+    document.body.appendChild(tip);
+    rangeHint = tip;
+
+    function position() {
+      var r = btn.getBoundingClientRect();
+      tip.style.top = (r.bottom + 12) + "px";
+      tip.style.right = Math.max(12, window.innerWidth - r.right - 8) + "px";
+    }
+    position();
+    window.addEventListener("resize", position);
+    requestAnimationFrame(function () { tip.classList.add("is-on"); });
+
+    tip._cleanup = function () { window.removeEventListener("resize", position); };
+    tip.querySelector(".range-hint__x").addEventListener("click", function () { dismissHint(true); });
+    // linger, then bow out on its own if untouched
+    tip._timer = setTimeout(function () { dismissHint(true); }, 16000);
+  }
+
+  function dismissHint(remember) {
+    if (!rangeHint) return;
+    var tip = rangeHint;
+    rangeHint = null;
+    if (remember) localStorage.setItem(HINT_KEY, "1");
+    clearTimeout(tip._timer);
+    if (tip._cleanup) tip._cleanup();
+    tip.classList.remove("is-on");
+    setTimeout(function () { tip.remove(); }, 320);
   }
 
   /* ---------------- submit modal ---------------- */
@@ -629,6 +697,7 @@
   }
   function start() {
     if (active) return;
+    dismissHint(true);
     active = true;
     document.body.classList.add("range-on");
     armTiles();
