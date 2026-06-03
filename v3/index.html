@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Brandon S. Clark — Senior Software Engineer</title>
+<meta name="description" content="Brandon S. Clark — Senior Software Engineer (backend, platform, integrations, AWS). I build secure, scalable systems and turn ambiguous problems into software teams can rely on." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ============ WEBGL ENERGY FIELD ============ -->
+<canvas id="fx" aria-hidden="true"></canvas>
+<div class="fx-scrim" aria-hidden="true"></div>
+<div class="scanlines" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============ MAGNETIC RETICLE CURSOR ============ -->
+<div class="reticle" aria-hidden="true"></div>
+<div class="reticle-dot" aria-hidden="true"></div>
+
+<!-- ============ HUD FRAME ============ -->
+<div class="hud" aria-hidden="true">
+  <span class="bracket bracket--tl"></span>
+  <span class="bracket bracket--tr"></span>
+  <span class="bracket bracket--bl"></span>
+  <span class="bracket bracket--br"></span>
+</div>
+
+<!-- scroll progress (transform scaleX) -->
+<div class="progress-track" aria-hidden="true"><span id="progress"></span></div>
+
+<!-- top telemetry bar -->
+<header class="topbar">
+  <a href="#top" class="brandmark" data-magnetic aria-label="Brandon S. Clark — top">
+    <span class="brandmark__glyph">BSC</span>
+    <span class="brandmark__sub mono">SR·SWE</span>
+  </a>
+  <div class="topbar__feed mono">
+    <span class="feed__item"><i class="dot"></i>SYS·ONLINE</span>
+    <span class="feed__item feed__item--hide">LAT 44.96°N · LON 89.63°W</span>
+    <span class="feed__item">UTC <b data-clock>00:00:00</b></span>
+  </div>
+</header>
+
+<!-- left scrollspy rail -->
+<nav class="rail" aria-label="Section navigation">
+  <ol class="rail__list">
+    <li><a data-spy="top"         data-label="INDEX"        href="#top"         data-magnetic><span class="rail__n mono">00</span><span class="rail__t mono">INDEX</span></a></li>
+    <li><a data-spy="impact"      data-label="IMPACT"       href="#impact"      data-magnetic><span class="rail__n mono">01</span><span class="rail__t mono">IMPACT</span></a></li>
+    <li><a data-spy="recognition" data-label="RECOGNITION"  href="#recognition" data-magnetic><span class="rail__n mono">02</span><span class="rail__t mono">RECOGNITION</span></a></li>
+    <li><a data-spy="experience"  data-label="EXPERIENCE"   href="#experience"  data-magnetic><span class="rail__n mono">03</span><span class="rail__t mono">EXPERIENCE</span></a></li>
+    <li><a data-spy="skills"      data-label="CAPABILITIES" href="#skills"      data-magnetic><span class="rail__n mono">04</span><span class="rail__t mono">CAPABILITIES</span></a></li>
+    <li><a data-spy="credentials" data-label="CREDENTIALS"  href="#credentials" data-magnetic><span class="rail__n mono">05</span><span class="rail__t mono">CREDENTIALS</span></a></li>
+    <li><a data-spy="contact"     data-label="CONTACT"      href="#contact"     data-magnetic><span class="rail__n mono">06</span><span class="rail__t mono">CONTACT</span></a></li>
+  </ol>
+</nav>
+
+<!-- bottom readout -->
+<footer class="botbar mono">
+  <span class="botbar__sec">SECTOR <b data-section-label>INDEX</b></span>
+  <span class="botbar__scroll">SCROLL <b data-scrollpct>000</b>%</span>
+</footer>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero" data-screen-label="Hero">
+    <div class="hero__inner">
+      <p class="hero__eyebrow mono reveal">
+        <span data-decode-load data-text="SENIOR SOFTWARE ENGINEER">SENIOR SOFTWARE ENGINEER</span>
+        <span class="sep">//</span>
+        <span data-decode-load data-text="BACKEND · PLATFORM · INTEGRATIONS · AWS">BACKEND · PLATFORM · INTEGRATIONS · AWS</span>
+      </p>
+
+      <h1 class="hero__name">
+        <span class="line" data-decode-load data-text="BRANDON">BRANDON</span>
+        <span class="line line--stroke" data-decode-load data-text="S. CLARK">S. CLARK</span>
+      </h1>
+
+      <p class="hero__lede reveal">
+        I build secure, scalable systems and turn ambiguous problems
+        into software teams can <em>rely&nbsp;on</em>.
+      </p>
+
+      <ul class="telemetry reveal" aria-label="Scope at a glance">
+        <li><b class="telemetry__v">09<span class="plus">+</span></b><span class="telemetry__k mono">YEARS</span></li>
+        <li><b class="telemetry__v">03</b><span class="telemetry__k mono">COMPANIES</span></li>
+        <li><b class="telemetry__v">06</b><span class="telemetry__k mono">ROLES</span></li>
+        <li><b class="telemetry__v">AWS<span class="plus">×2</span></b><span class="telemetry__k mono">CERTIFIED</span></li>
+        <li class="telemetry--arc"><b class="telemetry__v">FULL-STACK&nbsp;→&nbsp;PLATFORM</b><span class="telemetry__k mono">TRAJECTORY</span></li>
+      </ul>
+
+      <div class="hero__contact reveal">
+        <a class="chip" href="/cdn-cgi/l/email-protection#bedccddde1c9d1ccd5fec7dfd6d1d190ddd1d3" data-magnetic>
+          <span class="chip__k mono">EMAIL</span><span class="chip__v"><span class="__cf_email__" data-cfemail="d9bbaaba86aeb6abb299a0b8b1b6b6f7bab6b4">[email&#160;protected]</span></span>
+        </a>
+        <a class="chip" href="https://linkedin.com/in/brandon-c-it-industry" target="_blank" rel="noopener" data-magnetic>
+          <span class="chip__k mono">LINKEDIN</span><span class="chip__v">in/brandon-c-it-industry</span>
+        </a>
+        <a class="chip" href="https://github.com/theghostarbiter" target="_blank" rel="noopener" data-magnetic>
+          <span class="chip__k mono">GITHUB</span><span class="chip__v">theghostarbiter</span>
+        </a>
+        <span class="chip chip--loc">
+          <span class="chip__k mono">BASED</span><span class="chip__v">Wausau, WI</span>
+        </span>
+      </div>
+    </div>
+
+    <a href="#impact" class="hero__scroll mono" data-magnetic aria-label="Scroll to impact">
+      <span>SCROLL</span>
+      <span class="hero__scroll-line" aria-hidden="true"></span>
+    </a>
+  </section>
+
+  <!-- ============ SELECTED IMPACT ============ -->
+  <section class="section" id="impact" data-screen-label="Selected impact">
+    <div class="section__head reveal">
+      <span class="marker mono">01 // SELECTED&nbsp;IMPACT</span>
+      <h2 class="section__title"><span data-decode data-text="Scope first.">Scope first.</span><br /><span data-decode data-text="Metrics as proof.">Metrics as proof.</span></h2>
+      <p class="section__intro">Each number below carries the context that earned it — platforms shipped, constraints beaten, work that disappeared.</p>
+    </div>
+
+    <div class="impact">
+      <article class="panel panel--lg reveal" data-magnetic>
+        <span class="panel__tick" aria-hidden="true"></span>
+        <span class="panel__tag mono">PAYMENTS PLATFORM // BUILT &amp; SCALED</span>
+        <div class="panel__metric">
+          <span class="num" data-count="85" data-prefix="$" data-suffix="M+">$0M+</span>
+        </div>
+        <p class="panel__desc">Processed across <strong>~250K payments</strong> through a client-facing payment platform I designed, built, and scaled in production.</p>
+        <div class="bar" aria-hidden="true"><span class="bar__fill" style="--to: 100%"></span></div>
+        <span class="panel__foot mono">FOUNDATION FINANCE</span>
+      </article>
+
+      <article class="panel reveal" data-magnetic>
+        <span class="panel__tick" aria-hidden="true"></span>
+        <span class="panel__tag mono">CONSTRAINED DEVICES // MQTT</span>
+        <div class="panel__metric">
+          <span class="num" data-count="97" data-suffix="%">0%</span>
+          <span class="panel__metric-label">smaller payloads</span>
+        </div>
+        <div class="ba" aria-hidden="true">
+          <span class="ba__row"><span class="ba__k mono">BEFORE</span><span class="ba__bar"><i style="--w:100%"></i></span><span class="ba__v">476&nbsp;B</span></span>
+          <span class="ba__row ba__row--after"><span class="ba__k mono">AFTER</span><span class="ba__bar"><i style="--w:3.2%"></i></span><span class="ba__v">15&nbsp;B</span></span>
+        </div>
+        <p class="panel__desc">Delta-update protocol over MQTT — protecting bandwidth and battery on constrained IoT hardware.</p>
+        <span class="panel__foot mono">MILWAUKEE TOOL</span>
+      </article>
+
+      <article class="panel reveal" data-magnetic>
+        <span class="panel__tick" aria-hidden="true"></span>
+        <span class="panel__tag mono">PROVISIONING // CLI + API</span>
+        <div class="panel__metric">
+          <span class="num" data-count="80" data-suffix="%">0%</span>
+          <span class="panel__metric-label">faster provisioning</span>
+        </div>
+        <div class="ba" aria-hidden="true">
+          <span class="ba__row"><span class="ba__k mono">BEFORE</span><span class="ba__bar"><i style="--w:100%"></i></span><span class="ba__v">~10&nbsp;min</span></span>
+          <span class="ba__row ba__row--after"><span class="ba__k mono">AFTER</span><span class="ba__bar"><i style="--w:20%"></i></span><span class="ba__v">&lt;2&nbsp;min</span></span>
+        </div>
+        <p class="panel__desc">A secure CLI + API workflow that replaced a slow, manual device-onboarding process.</p>
+        <span class="panel__foot mono">MILWAUKEE TOOL</span>
+      </article>
+
+      <article class="panel reveal" data-magnetic>
+        <span class="panel__tick" aria-hidden="true"></span>
+        <span class="panel__tag mono">AUTOMATION // TOIL REMOVED</span>
+        <div class="panel__metric">
+          <span class="num" data-count="1200" data-suffix="+">0+</span>
+          <span class="panel__metric-label">hours automated</span>
+        </div>
+        <p class="panel__desc">Of manual work eliminated — roughly <strong>$40K</strong> of recovered capacity returned to the business.</p>
+        <div class="bar" aria-hidden="true"><span class="bar__fill" style="--to: 88%"></span></div>
+        <span class="panel__foot mono">FOUNDATION FINANCE</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ RECOGNITION ============ -->
+  <section class="section" id="recognition" data-screen-label="Recognition">
+    <div class="section__head reveal">
+      <span class="marker mono">02 // RECOGNITION&nbsp;&amp;&nbsp;TRUST</span>
+      <h2 class="section__title"><span data-decode data-text="The work that">The work that</span><br /><span data-decode data-text="gets you the keys.">gets you the keys.</span></h2>
+    </div>
+
+    <ul class="rec">
+      <li class="rec__item reveal" data-magnetic>
+        <span class="rec__no mono">A1</span>
+        <p>The <strong>only engineer across two teams</strong> to earn an AWS certification by self-study.</p>
+      </li>
+      <li class="rec__item reveal" data-magnetic>
+        <span class="rec__no mono">A2</span>
+        <p><strong>“Exceeds Expectations”</strong> on leadership behaviors in formal review.</p>
+      </li>
+      <li class="rec__item reveal" data-magnetic>
+        <span class="rec__no mono">A3</span>
+        <p>Repeatedly the <strong>sole / lead engineer</strong> trusted on critical integrations.</p>
+      </li>
+      <li class="rec__item reveal" data-magnetic>
+        <span class="rec__no mono">A4</span>
+        <p>Called a <strong>“Rockstar”</strong> by leadership — and by Oracle.</p>
+      </li>
+      <li class="rec__item reveal" data-magnetic>
+        <span class="rec__no mono">A5</span>
+        <p>Led a <strong>4-person innovation sprint</strong> from concept to demo.</p>
+      </li>
+      <li class="rec__item reveal" data-magnetic>
+        <span class="rec__no mono">A6</span>
+        <p>Cut <strong>new-engineer onboarding ~30%</strong> with better docs and tooling.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section class="section" id="experience" data-screen-label="Experience">
+    <div class="section__head reveal">
+      <span class="marker mono">03 // EXPERIENCE</span>
+      <h2 class="section__title"><span data-decode data-text="Nine years,">Nine years,</span><br /><span data-decode data-text="moving up the stack.">moving up the stack.</span></h2>
+    </div>
+
+    <ol class="log">
+      <li class="entry reveal" data-magnetic>
+        <div class="entry__when">
+          <span class="entry__years mono">2021 — PRESENT</span>
+          <span class="entry__badge mono">● ACTIVE</span>
+        </div>
+        <div class="entry__body">
+          <h3 class="entry__role">Senior Software Engineer</h3>
+          <p class="entry__org mono">MILWAUKEE TOOL</p>
+          <ul class="entry__points">
+            <li>Built secure IoT device <strong>provisioning</strong> (CLI + API) — cutting onboarding from ~10&nbsp;min to under 2.</li>
+            <li>Designed <strong>MQTT delta updates</strong> shrinking device payloads ~97% (476&nbsp;B → 15&nbsp;B).</li>
+            <li>Modernized tool-data pipelines on <strong>DocumentDB</strong>; built <strong>Oracle Unifier</strong> integrations.</li>
+            <li>Shipped on <strong>AWS serverless</strong> — Lambda, Step Functions, API Gateway, IoT Core.</li>
+          </ul>
+          <ul class="entry__stack mono">
+            <li>Python</li><li>TypeScript</li><li>MQTT</li><li>DocumentDB</li><li>AWS</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="entry reveal" data-magnetic>
+        <div class="entry__when">
+          <span class="entry__years mono">2019 — 2021</span>
+        </div>
+        <div class="entry__body">
+          <h3 class="entry__role">Software Engineer</h3>
+          <p class="entry__org mono">FOUNDATION FINANCE</p>
+          <ul class="entry__points">
+            <li>Built and scaled a client-facing <strong>$85M+ payment platform</strong> (~250K payments).</li>
+            <li>Automated <strong>1,200+ hours</strong> of manual work — roughly $40K recovered.</li>
+            <li>Delivered a customer portal on a <strong>MERN</strong> stack.</li>
+          </ul>
+          <ul class="entry__stack mono">
+            <li>Node.js</li><li>React</li><li>MongoDB</li><li>Express</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="entry reveal" data-magnetic>
+        <div class="entry__when">
+          <span class="entry__years mono">2017 — 2019</span>
+        </div>
+        <div class="entry__body">
+          <h3 class="entry__role">Software Engineer</h3>
+          <p class="entry__org mono">AQUA FINANCE</p>
+          <ul class="entry__points">
+            <li><strong>Promoted within 4 months</strong> of joining.</li>
+            <li>Built and modernized systems across <strong>.NET, Java, and Salesforce</strong>.</li>
+          </ul>
+          <ul class="entry__stack mono">
+            <li>C#</li><li>Java</li><li>Salesforce</li><li>SQL</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="entry reveal" data-magnetic>
+        <div class="entry__when">
+          <span class="entry__years mono">2016 — 2017</span>
+        </div>
+        <div class="entry__body">
+          <h3 class="entry__role">Software / QA Engineer</h3>
+          <p class="entry__org mono">MN ATTORNEY GENERAL’S OFFICE</p>
+          <ul class="entry__points">
+            <li>Built an <strong>MS Access error handler</strong> for a case-management system.</li>
+            <li>Ran <strong>full-lifecycle testing</strong> across releases.</li>
+          </ul>
+          <ul class="entry__stack mono">
+            <li>MS Access</li><li>VBA</li><li>QA</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section class="section" id="skills" data-screen-label="Capabilities">
+    <div class="section__head reveal">
+      <span class="marker mono">04 // CAPABILITIES</span>
+      <h2 class="section__title"><span data-decode data-text="The toolkit,">The toolkit,</span><br /><span data-decode data-text="grouped by intent.">grouped by intent.</span></h2>
+    </div>
+
+    <div class="skills">
+      <div class="skg skg--wide reveal">
+        <h3 class="skg__title">Cloud &amp; Platform</h3>
+        <ul class="skg__list mono">
+          <li>AWS</li><li>Lambda</li><li>Step Functions</li><li>API Gateway</li><li>IoT Core</li><li>DynamoDB</li><li>DocumentDB</li><li>Terraform</li><li>Docker</li><li>Kubernetes</li><li>CI/CD</li>
+        </ul>
+      </div>
+      <div class="skg reveal">
+        <h3 class="skg__title">Languages</h3>
+        <ul class="skg__list mono">
+          <li>Python</li><li>TypeScript</li><li>Node.js</li><li>Java</li><li>C#</li><li>SQL / T-SQL</li>
+        </ul>
+      </div>
+      <div class="skg reveal">
+        <h3 class="skg__title">Data &amp; APIs</h3>
+        <ul class="skg__list mono">
+          <li>REST</li><li>OpenAPI</li><li>ETL</li><li>MongoDB / Atlas</li><li>SQL Server</li><li>Redis</li><li>MQTT</li><li>Auth0</li><li>WebSockets</li>
+        </ul>
+      </div>
+      <div class="skg reveal">
+        <h3 class="skg__title">Reliability &amp; Security</h3>
+        <ul class="skg__list mono">
+          <li>Observability</li><li>SLAs / SLOs</li><li>OAuth / OIDC</li><li>Secrets management</li>
+        </ul>
+      </div>
+      <div class="skg reveal">
+        <h3 class="skg__title">Frontend</h3>
+        <ul class="skg__list mono">
+          <li>React</li><li>AngularJS</li><li>Express</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CREDENTIALS ============ -->
+  <section class="section" id="credentials" data-screen-label="Credentials">
+    <div class="section__head reveal">
+      <span class="marker mono">05 // CREDENTIALS</span>
+    </div>
+    <div class="cred">
+      <div class="cred__col reveal">
+        <h3 class="cred__h mono">CERTIFICATIONS</h3>
+        <ul class="cred__list">
+          <li data-magnetic>
+            <span class="cred__name">AWS Solutions Architect — Associate</span>
+            <span class="cred__meta mono">SAA-C03</span>
+          </li>
+          <li data-magnetic>
+            <span class="cred__name">AWS Certified Cloud Practitioner</span>
+            <span class="cred__meta mono">CLF-C01</span>
+          </li>
+        </ul>
+      </div>
+      <div class="cred__col reveal">
+        <h3 class="cred__h mono">EDUCATION</h3>
+        <ul class="cred__list">
+          <li data-magnetic>
+            <span class="cred__name">B.S. Finance — minor in Computer Science</span>
+            <span class="cred__meta mono">UNIVERSITY OF WISCONSIN — RIVER FALLS</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT / FOOTER ============ -->
+  <section class="contact" id="contact" data-screen-label="Contact">
+    <p class="contact__kicker mono reveal">LET’S BUILD SOMETHING RELIABLE</p>
+    <a class="contact__mail reveal" href="/cdn-cgi/l/email-protection#76140515290119041d360f171e19195815191b" data-magnetic data-decode data-text="bsc_work@yahoo.com"><span class="__cf_email__" data-cfemail="6d0f1e0e321a021f062d140c050202430e0200">[email&#160;protected]</span></a>
+    <div class="contact__links reveal">
+      <a href="https://linkedin.com/in/brandon-c-it-industry" target="_blank" rel="noopener" class="mono" data-magnetic>LINKEDIN ↗</a>
+      <a href="https://github.com/theghostarbiter" target="_blank" rel="noopener" class="mono" data-magnetic>GITHUB ↗</a>
+      <a href="/cdn-cgi/l/email-protection#036170605c746c7168437a626b6c6c2d606c6e" class="mono" data-magnetic>EMAIL ↗</a>
+    </div>
+    <div class="contact__base mono">
+      <span>BRANDON S. CLARK</span>
+      <span>SENIOR SOFTWARE ENGINEER · WAUSAU, WI</span>
+      <span>© 2026</span>
+    </div>
+  </section>
+
+</main>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="shader.js"></script>
+<script src="app.js"></script>
+<script src="range.js"></script>
+</body>
+</html>
